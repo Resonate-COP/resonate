@@ -10,12 +10,7 @@ button:active {
   background-color: #914b2f;
 }
 
-.bg {
-  background-color: hsla(16, 53%, 47%, 1);
-  background-image: radial-gradient(
-      at 28% 15%,
-      hsla(8, 31%, 41%, 1) 0px,
-      transparent 50%
-    ),
-    radial-gradient(at 22% 95%, hsla(11, 92%, 73%, 1) 0px, transparent 50%);
+.active {
+  color: #242423;
+  background-color: #cfdbd5;
 }

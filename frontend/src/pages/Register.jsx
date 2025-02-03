@@ -9,24 +9,24 @@ const Register = () => {
         <div className="container mx-auto text-center">
           {/* header */}
           <p className="text-3xl tracking-widest font-bold">
-            [ Welcome to RESONATE ]
+            Welcome to RESONATE
           </p>
-          <p className="mt-6">Time to drop your music taste</p>
+          <p className="mt-4">Time to drop your music taste</p>
           {/* form */}
-          <form className="mt-8 flex flex-col items-center gap-6">
+          <form className="mt-10 flex flex-col items-center gap-6">
             <input
               type="text"
-              className="px-4 py-3 w-[25%] bg-primary text-xl rounded"
+              className="px-4 py-3 w-[25%] bg-primary text-xl rounded-lg"
               placeholder="Name"
             />
             <input
               type="email"
-              className="px-4 py-3 w-[25%] bg-primary text-xl rounded"
+              className="px-4 py-3 w-[25%] bg-primary text-xl rounded-lg"
               placeholder="Email"
             />
             <input
               type="password"
-              className="px-4 py-3 w-[25%] bg-primary text-xl rounded"
+              className="px-4 py-3 w-[25%] bg-primary text-xl rounded-lg"
               placeholder="Password"
             />
             <label
@@ -41,7 +41,7 @@ const Register = () => {
               />
               Terms & conditions
             </label>
-            <button className="px-4 py-3 w-[25%] bg-accent text-xl text-background rounded">
+            <button className="px-4 py-3 w-[25%] bg-accent text-xl text-background rounded-lg">
               Register
             </button>
             <div className="px-4 py-3 w-[25%] text-lg text-neutral-400">
