@@ -10,7 +10,11 @@ button:active {
   background-color: #914b2f;
 }
 
-.active {
-  color: #242423;
-  background-color: #cfdbd5;
+/* .active * {
+  color: #f5cb5c;
+} */
+
+.orange-gra {
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 }
