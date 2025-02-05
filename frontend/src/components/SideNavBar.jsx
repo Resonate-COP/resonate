@@ -8,8 +8,16 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 import { TbPlaylist, TbHeart, TbLibrary } from "react-icons/tb";
+import Cookies from 'js-cookie';
 
 const SideNavBar = () => {
+  const navigate = useNavigate(); // navigator
+
+  const logout = () => {
+    Cookies.remove('uid'); // remove stored user id
+    navigate('/'); // go the initial page
+  }
+
   return (
     <>
       <section className="fixed bg-primary h-full w-[12%] font-semibold py-6">
@@ -74,12 +82,12 @@ const SideNavBar = () => {
             </div>
           </NavLink>
         </div>
-        <Link className="mx-4 py-2 px-4 rounded-lg hover:bg-red-500 absolute bottom-5 text-xl">
+        <button onClick={() => logout()} className="mx-4 py-2 px-4 rounded-lg hover:bg-red-500 absolute bottom-5 text-xl">
           <div className="flex items-center gap-2">
             <IoLogOutOutline />
             <div>Logout</div>
           </div>
-        </Link>
+        </button>
       </section>
     </>
   );
