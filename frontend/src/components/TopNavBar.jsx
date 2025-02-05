@@ -30,10 +30,10 @@ const TopNavBar = () => {
             </div>
           </NavLink>
         </div>
-        <div className="mr-[12%] flex gap-4 items-center px-6">
+        <div className="mr-[12%] flex gap-4 items-center pr-10">
           <p>Hurricane</p>
           <img
-            src="../../public/default/defaultProfile.png"
+            src="../../images/default/defaultProfile.png"
             alt="username"
             className="w-10"
           />

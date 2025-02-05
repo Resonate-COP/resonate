@@ -12,8 +12,8 @@ import { TbPlaylist, TbHeart, TbLibrary } from "react-icons/tb";
 const SideNavBar = () => {
   return (
     <>
-      <section className="fixed bg-background h-full w-[12%] font-semibold py-6">
-        <div className="flex items-center mb-8 mx-4 px-4 gap-2">
+      <section className="fixed bg-primary h-full w-[12%] font-semibold py-6">
+        <div className="flex items-center mb-12 mx-4 px-4 gap-2">
           <TbLibrary className="text-xl" />
           <div className="text-xl">My Library</div>
         </div>
