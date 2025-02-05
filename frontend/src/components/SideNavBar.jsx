@@ -1,5 +1,13 @@
 import React from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import {
+  IoPersonOutline,
+  IoAlbumsOutline,
+  IoNotificationsOutline,
+  IoSettingsOutline,
+  IoLogOutOutline,
+} from "react-icons/io5";
+import { TbPlaylist, TbHeart, TbLibrary } from "react-icons/tb";
 import Cookies from 'js-cookie';
 
 const SideNavBar = () => {
@@ -12,35 +20,73 @@ const SideNavBar = () => {
 
   return (
     <>
-      <section className="fixed bg-background h-full w-[12%] font-semibold py-4">
-        <div className="flex items-center mb-8 mx-4">
-          <img
-            src="../../public/default/defaultProfile.png"
-            alt="userProfile"
-            className="w-8 object-cover"
-          />
-          <div className="text-xl ml-4">Hurricane</div>
+      <section className="fixed bg-primary h-full w-[12%] font-semibold py-6">
+        <div className="flex items-center mb-12 mx-4 px-4 gap-2">
+          <TbLibrary className="text-xl" />
+          <div className="text-xl">My Library</div>
         </div>
 
         <div className="w-full text-xl flex flex-col gap-4">
-          <NavLink to={"/main"} className="mx-4 py-2 px-4 rounded-lg">
-            Home
+          <NavLink
+            to={"/user-liked-songs"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+          >
+            <div className="flex items-center gap-2">
+              <TbHeart />
+              <div>Liked Songs</div>
+            </div>
           </NavLink>
-          <NavLink to={"/search"} className="mx-4 py-2 px-4 rounded-lg">
-            Search
+          <NavLink
+            to={"/user-playlist"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+          >
+            <div className="flex items-center gap-2">
+              <TbPlaylist />
+              <div>Playlist</div>
+            </div>
           </NavLink>
-          <NavLink to={"/profile"} className="mx-4 py-2 px-4 rounded-lg">
-            Profile
+          <NavLink
+            to={"/user-artists"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+          >
+            <div className="flex items-center gap-2">
+              <IoPersonOutline />
+              <div>Artists</div>
+            </div>
           </NavLink>
-          <NavLink to={"/friends"} className="mx-4 py-2 px-4 rounded-lg">
-            Friends
+          <NavLink
+            to={"/user-albums"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+          >
+            <div className="flex items-center gap-2">
+              <IoAlbumsOutline />
+              <div>Albums</div>
+            </div>
+          </NavLink>
+          <NavLink
+            to={"/notification"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+          >
+            <div className="flex items-center gap-2">
+              <IoNotificationsOutline />
+              <div>Notification</div>
+            </div>
+          </NavLink>
+          <NavLink
+            to={"/setting"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+          >
+            <div className="flex items-center gap-2">
+              <IoSettingsOutline />
+              <div>Setting</div>
+            </div>
           </NavLink>
         </div>
-        <button
-          onClick={() => logout()}
-          className="absolute bottom-4 p-4 mx-4 text-lg hover:text-red-600"
-        >
-          Logout
+        <button onClick={() => logout()} className="mx-4 py-2 px-4 rounded-lg hover:bg-red-500 absolute bottom-5 text-xl">
+          <div className="flex items-center gap-2">
+            <IoLogOutOutline />
+            <div>Logout</div>
+          </div>
         </button>
       </section>
     </>
