@@ -1,13 +1,16 @@
 import React from "react";
-import Trending from "../components/Trending";
+import News from "../components/News";
+import TopHit from "../components/TopHit";
+import Suggest from "../components/Suggest";
+import PopularWithFriend from "../components/PopularWithFriend";
 
 const Home = () => {
   return (
-    <section className="ml-[12%] pb-5">
-      <div className="w-full text-center py-4 font-semibold">RESONATE</div>
-      <div className="bg-primary h-[200vh] w-[99%] rounded-xl overflow-hidden">
-        <Trending />
-      </div>
+    <section className="bg-background w-[99%] rounded-xl overflow-hidden p-6 grid grid-cols-2 grid-rows-4 gap-4">
+      <News />
+      <Suggest />
+      <TopHit />
+      <PopularWithFriend />
     </section>
   );
 };
