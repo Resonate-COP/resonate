@@ -1,7 +1,15 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 const SideNavBar = () => {
+  const navigate = useNavigate(); // navigator
+
+  const logout = () => {
+    Cookies.remove('uid'); // remove stored user id
+    navigate('/'); // go the initial page
+  }
+
   return (
     <>
       <section className="fixed bg-background h-full w-[12%] font-semibold py-4">
@@ -28,12 +36,12 @@ const SideNavBar = () => {
             Friends
           </NavLink>
         </div>
-        <Link
-          to={"/"}
+        <button
+          onClick={() => logout()}
           className="absolute bottom-4 p-4 mx-4 text-lg hover:text-red-600"
         >
           Logout
-        </Link>
+        </button>
       </section>
     </>
   );
