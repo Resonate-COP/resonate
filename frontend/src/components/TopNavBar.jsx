@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   RiHomeSmile2Fill,
   RiStarSmileFill,
   RiSearchEyeFill,
 } from "react-icons/ri";
+import { fetchData } from "../../api";
+import Cookies from 'js-cookie';
 
 const TopNavBar = () => {
+  const [loading, setLoading] = useState(false); // to handle loading
+  const [userData, setUserData] = useState([]); // user data
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await fetchData(`/users/${Cookies.get('uid')}`); // get user data using stored user id
+        setUserData(result[0]);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getData();
+  }, []);
+
+
   return (
     <>
       <div className="ml-[12%] bg-background w-full pt-4 font-semibold text-xl flex justify-between items-center fixed">
@@ -31,7 +49,7 @@ const TopNavBar = () => {
           </NavLink>
         </div>
         <div className="mr-[12%] flex gap-4 items-center pr-10">
-          <p>Hurricane</p>
+          <p>{userData.username}</p>
           <img
             src="../../images/default/defaultProfile.png"
             alt="username"
