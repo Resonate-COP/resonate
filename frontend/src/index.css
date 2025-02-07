@@ -10,9 +10,9 @@ button:active {
   background-color: #914b2f;
 }
 
-/* .active * {
+.active > div > .active {
   color: #f5cb5c;
-} */
+}
 
 /* news background gradient  */
 .orange-gra {

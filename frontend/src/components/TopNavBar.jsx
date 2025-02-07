@@ -6,7 +6,7 @@ import {
   RiSearchEyeFill,
 } from "react-icons/ri";
 import { fetchData } from "../../api";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const TopNavBar = () => {
   const [loading, setLoading] = useState(false); // to handle loading
@@ -15,15 +15,14 @@ const TopNavBar = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const result = await fetchData(`/users/${Cookies.get('uid')}`); // get user data using stored user id
+        const result = await fetchData(`/users/${Cookies.get("uid")}`); // get user data using stored user id
         setUserData(result[0]);
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     getData();
   }, []);
-
 
   return (
     <>
@@ -35,16 +34,16 @@ const TopNavBar = () => {
               <div>Home</div>
             </div>
           </NavLink>
-          <NavLink to={"/main/reviews"} className="px-6 rounded-t-lg">
+          <NavLink to="/main/reviews" className="px-6 rounded-t-lg">
             <div className="flex items-center gap-2">
               <RiStarSmileFill />
-              <div>Reviews</div>
+              <div className="active">Reviews</div>
             </div>
           </NavLink>
           <NavLink to={"/main/search"} className="px-6 rounded-t-lg">
             <div className="flex items-center gap-2">
               <RiSearchEyeFill />
-              <div>Search</div>
+              <div className="active">Search</div>
             </div>
           </NavLink>
         </div>

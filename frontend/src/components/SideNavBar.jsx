@@ -8,15 +8,15 @@ import {
   IoLogOutOutline,
 } from "react-icons/io5";
 import { TbPlaylist, TbHeart, TbLibrary } from "react-icons/tb";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const SideNavBar = () => {
   const navigate = useNavigate(); // navigator
 
   const logout = () => {
-    Cookies.remove('uid'); // remove stored user id
-    navigate('/'); // go the initial page
-  }
+    Cookies.remove("uid"); // remove stored user id
+    navigate("/"); // go the initial page
+  };
 
   return (
     <>
@@ -29,7 +29,7 @@ const SideNavBar = () => {
         <div className="w-full text-xl flex flex-col gap-4">
           <NavLink
             to={"/user-liked-songs"}
-            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
               <TbHeart />
@@ -38,7 +38,7 @@ const SideNavBar = () => {
           </NavLink>
           <NavLink
             to={"/user-playlist"}
-            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
               <TbPlaylist />
@@ -47,7 +47,7 @@ const SideNavBar = () => {
           </NavLink>
           <NavLink
             to={"/user-artists"}
-            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
               <IoPersonOutline />
@@ -56,7 +56,7 @@ const SideNavBar = () => {
           </NavLink>
           <NavLink
             to={"/user-albums"}
-            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
               <IoAlbumsOutline />
@@ -65,7 +65,7 @@ const SideNavBar = () => {
           </NavLink>
           <NavLink
             to={"/notification"}
-            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
               <IoNotificationsOutline />
@@ -74,7 +74,7 @@ const SideNavBar = () => {
           </NavLink>
           <NavLink
             to={"/setting"}
-            className="mx-4 py-2 px-4 rounded-lg hover:bg-primary"
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
               <IoSettingsOutline />
@@ -82,7 +82,10 @@ const SideNavBar = () => {
             </div>
           </NavLink>
         </div>
-        <button onClick={() => logout()} className="mx-4 py-2 px-4 rounded-lg hover:bg-red-500 absolute bottom-5 text-xl">
+        <button
+          onClick={() => logout()}
+          className="mx-4 py-2 px-4 rounded-lg hover:bg-red-500 absolute bottom-5 text-xl  transition duration-200"
+        >
           <div className="flex items-center gap-2">
             <IoLogOutOutline />
             <div>Logout</div>
