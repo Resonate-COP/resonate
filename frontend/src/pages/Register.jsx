@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import { fetchData, postData } from "../../api";
 
@@ -8,6 +8,7 @@ const Register = () => {
     const [email, setEmail] = useState(""); // Email Input
     const [password, setPassword] = useState(""); // Password Input
     const [accept, setAccept] = useState(false); // Terms And Conditions Input
+    const navigate = useNavigate();
 
     useEffect(() => {
       if (Cookies.get('uid') !== undefined) { // check if the user is already loged in

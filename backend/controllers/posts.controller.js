@@ -77,3 +77,13 @@ export const updatePost = async (req, res) => {
         res.status(500).json({ message: err })
     }
 }
+
+export const deletePost = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await pool.query('DELETE FROM posts WHERE post_id = ?', [id]);
+        res.status(200).json({ message: 'Deleted Successfully'});
+    } catch (err) {
+        res.status(500).json({ message: err });
+    }
+}
