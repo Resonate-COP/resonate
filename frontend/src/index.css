@@ -12,6 +12,7 @@ button:active {
 
 .active > div > .active {
   color: #f5cb5c;
+  fill: #f5cb5c;
 }
 
 /* news background gradient  */
@@ -35,4 +36,14 @@ button:active {
 .animate-gradient {
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
+}
+
+/* rating star  */
+.star,
+.starFill {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.starFill {
+  fill: #f5cb5c;
 }
