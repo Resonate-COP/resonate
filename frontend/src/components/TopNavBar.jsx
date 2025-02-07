@@ -14,11 +14,14 @@ const TopNavBar = () => {
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       try {
         const result = await fetchData(`/users/${Cookies.get('uid')}`); // get user data using stored user id
         setUserData(result[0]);
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoading(false);
       }
     }
     getData();

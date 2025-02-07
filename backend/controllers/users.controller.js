@@ -82,7 +82,7 @@ export const resetPassword = async (req, res) => {
 export const deleteUser = async (req, res) => {
     const { id } = req.params;
     try {
-        const result = await pool.query("DELETE * from users WHERE user_id = ?", [id]);
+        const result = await pool.query("DELETE FROM users WHERE user_id = ?", [id]);
         res.status(200).json(result);
     } catch (err) {
         res.status(500).json({ message: err });
