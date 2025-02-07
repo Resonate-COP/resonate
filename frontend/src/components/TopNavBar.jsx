@@ -35,14 +35,14 @@ const TopNavBar = () => {
             </div>
           </NavLink>
           <NavLink to="/main/reviews" className="px-6 rounded-t-lg">
-            <div className="flex items-center gap-2">
-              <RiStarSmileFill />
+            <div className="flex items-center gap-2 active">
+              <RiStarSmileFill className="active" />
               <div className="active">Reviews</div>
             </div>
           </NavLink>
           <NavLink to={"/main/search"} className="px-6 rounded-t-lg">
             <div className="flex items-center gap-2">
-              <RiSearchEyeFill />
+              <RiSearchEyeFill className="active" />
               <div className="active">Search</div>
             </div>
           </NavLink>
