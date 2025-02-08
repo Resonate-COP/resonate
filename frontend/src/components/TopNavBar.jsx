@@ -29,7 +29,7 @@ const TopNavBar = () => {
 
   return (
     <>
-      <div className="ml-[12%] bg-background w-full pt-4 font-semibold text-xl flex justify-between items-center fixed">
+      <div className="ml-[12%] bg-background w-full py-4 font-semibold text-xl flex justify-between items-center fixed">
         <div className="flex gap-6">
           <NavLink to={"/main"} className="px-6 rounded-t-lg">
             <div className="flex items-center gap-2">
