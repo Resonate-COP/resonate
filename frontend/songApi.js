@@ -52,7 +52,7 @@ export const searchSong = async (song) => {
 
 export const getTopHits = async () => {
     const token = await getAccessToken();
-    const url = "https://api.spotify.com/v1/browse/featured-playlists?limit=5";
+    const url = "https://api.spotify.com/v1/browse/featured-playlists?limit=10";
 
     try {
         const response = await axios.get(url, {
@@ -64,8 +64,3 @@ export const getTopHits = async () => {
         throw error;
     }
 }
-
-(async () => {
-    const playlists = await getTopHits();
-    console.log(playlists);
-})();
