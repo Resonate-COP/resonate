@@ -49,3 +49,23 @@ export const searchSong = async (song) => {
         throw error;
     }
 };
+
+export const getTopHits = async () => {
+    const token = await getAccessToken();
+    const url = "https://api.spotify.com/v1/browse/featured-playlists?limit=5";
+
+    try {
+        const response = await axios.get(url, {
+            headers: { Authorization: `Bearer ${token}`}
+        });
+        return response.data.playlists.items;
+    } catch (error) {
+        console.log("Error fetching: " + error);
+        throw error;
+    }
+}
+
+(async () => {
+    const playlists = await getTopHits();
+    console.log(playlists);
+})();
