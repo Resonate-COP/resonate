@@ -10,40 +10,39 @@ let tokenExpiresAt = 0; // Timestamp to track token expiry
 async function getAccessToken() {
     if (accessToken && Date.now() < tokenExpiresAt) {
         console.log("Using cached token");
-        return accessToken; // Use existing token if still valid
+        return accessToken; // Use cached token if still valid
     }
 
     console.log("Fetching new token...");
     const url = "https://accounts.spotify.com/api/token";
+    
     const headers = {
         "Content-Type": "application/x-www-form-urlencoded",
-        Authorization:
-            "Basic " + Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64"),
+        Authorization: "Basic " + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),
     };
-    const body = "grant_type=client_credentials";
+    
+    const body = new URLSearchParams({ grant_type: "client_credentials" }).toString();
 
     try {
-        const response = await fetch(url, { method: "POST", headers, body });
-        const data = await response.json();
-        
-        accessToken = data.access_token;
-        tokenExpiresAt = Date.now() + data.expires_in * 1000; // Convert expiry time to timestamp
+        const response = await axios.post(url, body, { headers });
+        accessToken = response.data.access_token;
+        tokenExpiresAt = Date.now() + response.data.expires_in * 1000; // Convert expiry time to timestamp
         return accessToken;
     } catch (error) {
-        console.error("Error fetching access token:", error);
+        console.error("Error fetching access token:", error.response?.data || error.message);
         throw error;
     }
 }
-
 export const searchSong = async (song) => {
     const token = await getAccessToken(); // Ensure we await the token
-    const url = `${API_BASE_URL}/search?q=${encodeURIComponent(song)}&type=track&limit=1`;
+    console.log(token);
+    const url = `${API_BASE_URL}/search?q=${encodeURIComponent(song)}&type=track&limit=10`;
 
     try {
         const response = await axios.get(url, {
             headers: { Authorization: `Bearer ${token}` },
         });
-        return response.data;
+        return response.data.tracks.items;
     } catch (error) {
         console.error("Error fetching song:", error.response?.data || error.message);
         throw error;
@@ -52,15 +51,22 @@ export const searchSong = async (song) => {
 
 export const getTopHits = async () => {
     const token = await getAccessToken();
-    const url = "https://api.spotify.com/v1/browse/featured-playlists?limit=10";
+    const url = "https://api.spotify.com/v1/playlists/3EdeHJAsy74r3hqw8Vwrta";
 
     try {
         const response = await axios.get(url, {
             headers: { Authorization: `Bearer ${token}`}
         });
-        return response.data.playlists.items;
+        return response.data.tracks.items;
     } catch (error) {
         console.log("Error fetching: " + error);
         throw error;
     }
 }
+
+const fetch = async () => {
+    const result = await getTopHits();
+    console.log(result[0]);
+}
+
+fetch();
