@@ -17,8 +17,7 @@ button:active {
 
 /* news background gradient  */
 .orange-gra {
-  background-color: #fbab7e;
-  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+  background-image: linear-gradient(62deg, #f5ae5c 0%, #f5cb5c 100%);
 }
 
 /* text gradient */

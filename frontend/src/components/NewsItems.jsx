@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NewsItems = () => {
   return (
-    <section className="p-6 px-10 h-[30vh] orange-gra rounded-xl overflow-hidden flex justify-between">
+    <section className="row-span-1 h-[30vh] p-6 px-10 orange-gra rounded-xl overflow-hidden flex justify-between">
       <div className="w-1/2 text-background">
         <div className="text-3xl font-semibold text-background mb-4">
           News Title
@@ -16,7 +16,9 @@ const NewsItems = () => {
         </div>
         <Link className="text-lg">See more ..</Link>
       </div>
-      <img src="../../images/default/4.jpg" alt="title" />
+      <div>
+        <img src="../../images/default/4.jpg" alt="title" className="h-full" />
+      </div>
     </section>
   );
 };
