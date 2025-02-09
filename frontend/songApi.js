@@ -8,50 +8,58 @@ let accessToken = null;
 let tokenExpiresAt = 0; // Timestamp to track token expiry
 
 async function getAccessToken() {
-    if (accessToken && Date.now() < tokenExpiresAt) {
-        console.log("Using cached token");
-        return accessToken; // Use cached token if still valid
-    }
+  if (accessToken && Date.now() < tokenExpiresAt) {
+    return accessToken; // Use cached token if still valid
+  }
 
-    console.log("Fetching new token...");
-    const url = "https://accounts.spotify.com/api/token";
-    
-    const headers = {
-        "Content-Type": "application/x-www-form-urlencoded",
-        Authorization: "Basic " + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),
-    };
-    
-    const body = new URLSearchParams({ grant_type: "client_credentials" }).toString();
+  const url = "https://accounts.spotify.com/api/token";
 
-    try {
-        const response = await axios.post(url, body, { headers });
-        accessToken = response.data.access_token;
-        tokenExpiresAt = Date.now() + response.data.expires_in * 1000; // Convert expiry time to timestamp
-        return accessToken;
-    } catch (error) {
-        console.error("Error fetching access token:", error.response?.data || error.message);
-        throw error;
-    }
+  const headers = {
+    "Content-Type": "application/x-www-form-urlencoded",
+    Authorization: "Basic " + btoa(`${CLIENT_ID}:${CLIENT_SECRET}`),
+  };
+
+  const body = new URLSearchParams({
+    grant_type: "client_credentials",
+  }).toString();
+
+  try {
+    const response = await axios.post(url, body, { headers });
+    accessToken = response.data.access_token;
+    tokenExpiresAt = Date.now() + response.data.expires_in * 1000; // Convert expiry time to timestamp
+    return accessToken;
+  } catch (error) {
+    console.error(
+      "Error fetching access token:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
 }
 export const searchSong = async (song) => {
-    const token = await getAccessToken(); // Ensure we await the token
-    console.log(token);
-    const url = `${API_BASE_URL}/search?q=${encodeURIComponent(song)}&type=track&limit=10`;
+  const token = await getAccessToken(); // Ensure we await the token
+  console.log(token);
+  const url = `${API_BASE_URL}/search?q=${encodeURIComponent(
+    song
+  )}&type=track&limit=10`;
 
-    try {
-        const response = await axios.get(url, {
-            headers: { Authorization: `Bearer ${token}` },
-        });
-        return response.data.tracks.items;
-    } catch (error) {
-        console.error("Error fetching song:", error.response?.data || error.message);
-        throw error;
-    }
+  try {
+    const response = await axios.get(url, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return response.data.tracks.items;
+  } catch (error) {
+    console.error(
+      "Error fetching song:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
 };
 
 export const getTopHits = async () => {
-    const token = await getAccessToken();
-    const url = "https://api.spotify.com/v1/playlists/3EdeHJAsy74r3hqw8Vwrta";
+  const token = await getAccessToken();
+  const url = "https://api.spotify.com/v1/playlists/3EdeHJAsy74r3hqw8Vwrta";
 
     try {
         const response = await axios.get(url, {
@@ -63,3 +71,4 @@ export const getTopHits = async () => {
         throw error;
     }
 }
+
