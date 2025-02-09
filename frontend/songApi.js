@@ -61,19 +61,14 @@ export const getTopHits = async () => {
   const token = await getAccessToken();
   const url = "https://api.spotify.com/v1/playlists/3EdeHJAsy74r3hqw8Vwrta";
 
-  try {
-    const response = await axios.get(url, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    return response.data.tracks.items;
-  } catch (error) {
-    console.log("Error fetching: " + error);
-    throw error;
-  }
-};
+    try {
+        const response = await axios.get(url, {
+            headers: { Authorization: `Bearer ${token}`}
+        });
+        return response.data.tracks.items;
+    } catch (error) {
+        console.log("Error fetching: " + error);
+        throw error;
+    }
+}
 
-const fetch = async () => {
-  const result = await getTopHits();
-};
-
-fetch();

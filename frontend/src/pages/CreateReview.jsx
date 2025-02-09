@@ -1,7 +1,9 @@
 import React from "react";
-import { Form } from "react-router-dom";
+import { Form, useParams } from "react-router-dom";
 
 const CreateReview = () => {
+  const { songid } = useParams();
+
   return (
     <section className="bg-background w-[99%] h-[89.4vh] rounded-xl overflow-hidden px-6 ">
       <div className="text-2xl font-bold py-4">Create Your Review</div>
@@ -12,7 +14,7 @@ const CreateReview = () => {
           className="w-24 rounded mr-4"
         />
         <div>
-          <p className="text-2xl font-semibold">song name</p>
+          <p className="text-2xl font-semibold">{songid}</p>
           <p className="text-neutral-400">3:12</p>
           <p className="">
             <p className=" text-neutral-400">Artist name . Ablum name</p>
