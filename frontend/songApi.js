@@ -62,5 +62,4 @@ export const getTopHits = async () => {
         console.log("Error fetching: " + error);
         throw error;
     }
-
 }
