@@ -38,8 +38,8 @@ export const getByUserId = async (req, res) => {
 export const createPost = async (req, res) => {
     try {
         const result = await pool.query(
-            "INSERT INTO posts (post_id, user_id, is_reviewing, caption) VALUES (UUID(), ?, ?, ?)",
-            [req.body.user_id, false, req.body.caption]
+            "INSERT INTO posts (post_id, user_id, is_reviewing, song_title, artist, album, caption) VALUES (UUID(), ?, ?, ?, ?, ?, ?)",
+            [req.body.user_id, true, req.body.song_title, req.body.artist, req.body.album, req.body.caption]
         );
         res.status(200).json(result);
     } catch (err) {

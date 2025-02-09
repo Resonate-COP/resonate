@@ -62,11 +62,5 @@ export const getTopHits = async () => {
         console.log("Error fetching: " + error);
         throw error;
     }
-}
 
-const fetch = async () => {
-    const result = await getTopHits();
-    console.log(result[0]);
 }
-
-fetch();
