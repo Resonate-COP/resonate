@@ -1,7 +1,7 @@
 import React from "react";
 import { TbHeart, TbCirclePlus } from "react-icons/tb";
 
-const SongItem = ({ song }) => {
+const SongItem = ({ song, onclick }) => {
   // obj destructing
   let name = song.track.name;
   let duration_ms = song.track.duration_ms; // duration is come as millisecond
@@ -31,7 +31,9 @@ const SongItem = ({ song }) => {
         </div>
         <div className="flex flex-col gap-4 justify-center">
           <TbHeart className="h-6 w-6" /> {/* to like the song  */}
-          <TbCirclePlus className="h-6 w-6" />
+          <button onClick={onclick}>
+            <TbCirclePlus className="h-6 w-6" />
+          </button>
           {/* to review the song (add on click here)*/}
         </div>
       </div>

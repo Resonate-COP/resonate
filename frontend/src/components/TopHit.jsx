@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from "react";
 import SongItem from "./SongItem";
 import { getTopHits } from "../../songApi";
+import { useNavigate } from "react-router-dom";
 
 const TopHit = () => {
   const [songList, setSongList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -17,7 +19,6 @@ const TopHit = () => {
     };
     getData();
   }, []);
-  console.log(songList);
 
   return (
     <div className="row-span-3 bg-primary rounded-xl p-6 px-10">
@@ -27,7 +28,7 @@ const TopHit = () => {
       <div className="flex flex-col gap-4">
         {/* Limit results to a maximum of 7 */}
         {songList.slice(0, 7).map((song, index) => (
-          <SongItem key={index} song={song} />
+          <SongItem key={index} song={song} onclick={() => navigate(`/main/${song.track.id}/createReview`)}/>
         ))}
       </div>
     </div>

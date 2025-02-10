@@ -36,9 +36,9 @@ async function getAccessToken() {
     throw error;
   }
 }
+
 export const searchSong = async (song) => {
   const token = await getAccessToken(); // Ensure we await the token
-  console.log(token);
   const url = `${API_BASE_URL}/search?q=${encodeURIComponent(
     song
   )}&type=track&limit=10`;
@@ -56,6 +56,21 @@ export const searchSong = async (song) => {
     throw error;
   }
 };
+
+export const searchSongById = async (songId) => {
+  const token = await getAccessToken();
+  const url = `https://api.spotify.com/v1/tracks/${encodeURIComponent(songId)}`
+
+  try {
+    const response = await axios.get(url, {
+      headers: { Authorization: `Bearer ${token}`}
+    });
+    return response.data;
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+}
 
 export const getTopHits = async () => {
   const token = await getAccessToken();
