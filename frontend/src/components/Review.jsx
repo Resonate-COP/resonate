@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { TbHeart, TbCirclePlus, TbStar, TbStarFilled } from "react-icons/tb";
 import { searchSongById } from "../../songApi";
 import { fetchData } from "../../api";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 const Review = ({ data }) => {
   const [loading, setLoading] = useState(false); // to handle loading
   const [songData, setSongData] = useState({}); // to store song data
   const [userData, setUserData] = useState({}); // to store user data
-  const [artist, setArtist] = useState('');
+  const [artist, setArtist] = useState("");
 
   useEffect(() => {
     const getSongData = async () => {
@@ -22,7 +22,7 @@ const Review = ({ data }) => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     const getUserData = async () => {
       setLoading(true);
@@ -34,7 +34,7 @@ const Review = ({ data }) => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     getSongData();
     getUserData();
@@ -43,25 +43,28 @@ const Review = ({ data }) => {
   function msToMinutesSeconds(ms) {
     let minutes = Math.floor(ms / 60000);
     let seconds = Math.floor((ms % 60000) / 1000);
-    
-    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+    return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   }
 
   return (
     <section className="p-4 mb-4 bg-primary rounded-lg flex">
       {/* song  */}
-      <div className="pr-10 border-r-2 border-neutral-700">
+      <div className="pr-10 border-r-2 border-neutral-700 w-1/2">
         <div className="flex items-start">
           <img
             src={songData?.album?.images[0]?.url}
             alt="songName"
-            className="w-24 rounded mr-4"
+            className="w-28 rounded mr-4"
           />
           <div>
             <p className="text-2xl font-semibold">{songData?.name}</p>
-            <p className="text-neutral-400">{msToMinutesSeconds(songData?.duration_ms)}</p>
+            <p className="text-neutral-400">
+              {msToMinutesSeconds(songData?.duration_ms)}
+            </p>
             <p className="">
-              <p className=" text-neutral-400">{artist} . {songData?.album?.name}</p>
+              <p className=" text-neutral-400">{artist}</p>
+              <p className=" text-neutral-400">{songData?.album?.name}</p>
             </p>
           </div>
         </div>
@@ -69,13 +72,13 @@ const Review = ({ data }) => {
           <TbStarFilled className="starFill" />
           <TbStarFilled className="starFill" />
           <TbStarFilled className="starFill" />
-          <TbStar className="w-6 h-6" />
-          <TbStar className="w-6 h-6" />
+          <TbStar className="star" />
+          <TbStar className="star" />
         </div>
       </div>
 
       {/* review  */}
-      <div className="w-full text-end">
+      <div className="text-end w-1/2">
         {/* username ang profile  */}
         <div className="flex items-center justify-end">
           <p className="mr-2">{userData.username}</p>
