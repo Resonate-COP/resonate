@@ -6,6 +6,7 @@ import {
   IoNotificationsOutline,
   IoSettingsOutline,
   IoLogOutOutline,
+  IoAppsOutline,
 } from "react-icons/io5";
 import { TbPlaylist, TbHeart, TbLibrary } from "react-icons/tb";
 import Cookies from "js-cookie";
@@ -59,8 +60,17 @@ const SideNavBar = () => {
             className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
           >
             <div className="flex items-center gap-2">
-              <IoAlbumsOutline />
+              <IoAppsOutline />
               <div>Albums</div>
+            </div>
+          </NavLink>
+          <NavLink
+            to={"/my-reviews"}
+            className="mx-4 py-2 px-4 rounded-lg hover:bg-background transition duration-200"
+          >
+            <div className="flex items-center gap-2">
+              <IoAlbumsOutline />
+              <div>Reviews</div>
             </div>
           </NavLink>
           <NavLink
