@@ -35,6 +35,19 @@ export const getByUserId = async (req, res) => {
     }
 };
 
+export const getBySongId = async (req, res) => {
+    const { song_id } = req.query;
+    try {
+        const [row] = await pool.query(
+            "SELECT * FROM posts WHERE song_id = ?",
+            [song_id]
+        )
+        res.status(200).json(row);
+    } catch (err) {
+        res.status(500).json({ message: err });
+    }
+}
+
 export const createPost = async (req, res) => {
     try {
         const result = await pool.query(

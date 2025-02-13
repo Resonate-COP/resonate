@@ -3,12 +3,14 @@ import { TbHeart, TbCirclePlus, TbStar, TbStarFilled } from "react-icons/tb";
 import { searchSongById } from "../../songApi";
 import { fetchData } from "../../api";
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 
 const Review = ({ data }) => {
   const [loading, setLoading] = useState(false); // to handle loading
   const [songData, setSongData] = useState({}); // to store song data
   const [userData, setUserData] = useState({}); // to store user data
   const [artist, setArtist] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSongData = async () => {
@@ -58,7 +60,12 @@ const Review = ({ data }) => {
             className="w-24 rounded mr-4"
           />
           <div>
-            <p className="text-2xl font-semibold">{songData?.name}</p>
+            <button 
+              className="text-2xl font-semibold hover:bg-gradient-to-r hover:from-accent hover:via-green-300 hover:to-accent hover:bg-clip-text hover:text-transparent hover:animate-gradient"
+              onClick={() => navigate(`/main/${songData.id}`)}
+            >
+              {songData?.name}
+            </button>
             <p className="text-neutral-400">{msToMinutesSeconds(songData?.duration_ms)}</p>
             <p className="">
               <p className=" text-neutral-400">{artist} . {songData?.album?.name}</p>
