@@ -10,14 +10,14 @@ const ReviewsList = () => {
     const getData = async () => {
       setLoading(true);
       try {
-        const result = await fetchData('/posts');
+        const result = await fetchData("/posts");
         setData(result);
       } catch (err) {
         console.log(err);
       }
-    }
+    };
     getData();
-  }, [])
+  }, []);
 
   return (
     <section className="mt-20">

@@ -6,8 +6,8 @@
   color: #eaeaea;
 }
 
-button:active {
-  background-color: #914b2f;
+.auth-btn:active {
+  background-color: #c5a824;
 }
 
 .active > div > .active {
