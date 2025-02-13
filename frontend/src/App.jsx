@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Reviews from "./pages/Reviews";
 import Search from "./pages/Search";
 import CreateReview from "./pages/CreateReview";
+import SongInfo from "./pages/SongInfo";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path: "reviews", element: <Reviews /> },
       { path: "search", element: <Search /> },
       { path: ":songid/createReview", element: <CreateReview /> },
+      { path: ":songid", element: <SongInfo /> }
     ],
   },
 ]);

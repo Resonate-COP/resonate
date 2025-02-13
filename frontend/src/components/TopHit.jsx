@@ -28,7 +28,12 @@ const TopHit = () => {
       <div className="flex flex-col gap-4">
         {/* Limit results to a maximum of 7 */}
         {songList.slice(0, 7).map((song, index) => (
-          <SongItem key={index} song={song} onclick={() => navigate(`/main/${song.track.id}/createReview`)}/>
+          <SongItem 
+            key={index} 
+            song={song} 
+            onclick={() => navigate(`/main/${song.track.id}/createReview`)}
+            goToMusicPage={() => navigate(`/main/${song.track.id}`)}
+          />
         ))}
       </div>
     </div>

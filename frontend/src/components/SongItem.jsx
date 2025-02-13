@@ -1,7 +1,7 @@
 import React from "react";
 import { TbHeart, TbCirclePlus } from "react-icons/tb";
 
-const SongItem = ({ song, onclick }) => {
+const SongItem = ({ song, onclick, goToMusicPage }) => {
   // obj destructing
   let name = song.track.name;
   let duration_ms = song.track.duration_ms; // duration is come as millisecond
@@ -22,7 +22,12 @@ const SongItem = ({ song, onclick }) => {
         <div className="flex items-start">
           <img src={image} alt="songName" className="w-24 rounded mr-4" />
           <div>
-            <p className="text-2xl font-semibold">{name}</p>
+            <button 
+              className="text-2xl font-semibold cursor-pointer hover:text-neutral-400 duration-300"
+              onClick={goToMusicPage}
+            >
+              {name}
+            </button>
             <p className="text-neutral-400">{duration}</p>
             <p className="">
               <p className=" text-neutral-400">{artist}</p>

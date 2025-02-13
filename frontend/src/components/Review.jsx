@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { TbHeart, TbCirclePlus, TbStar, TbStarFilled } from "react-icons/tb";
 import { searchSongById } from "../../songApi";
 import { fetchData } from "../../api";
-import Cookies from "js-cookie";
+import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 
 const Review = ({ data }) => {
   const [loading, setLoading] = useState(false); // to handle loading
   const [songData, setSongData] = useState({}); // to store song data
   const [userData, setUserData] = useState({}); // to store user data
-  const [artist, setArtist] = useState("");
+  const [artist, setArtist] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getSongData = async () => {
@@ -58,10 +60,14 @@ const Review = ({ data }) => {
             className="w-28 rounded mr-4"
           />
           <div>
-            <p className="text-2xl font-semibold">{songData?.name}</p>
-            <p className="text-neutral-400">
-              {msToMinutesSeconds(songData?.duration_ms)}
-            </p>
+
+            <button 
+              className="text-2xl font-semibold cursor-pointer hover:text-neutral-400 duration-300"
+              onClick={() => navigate(`/main/${songData.id}`)}
+            >
+              {songData?.name}
+            </button>
+            <p className="text-neutral-400">{msToMinutesSeconds(songData?.duration_ms)}</p>
             <p className="">
               <p className=" text-neutral-400">{artist}</p>
               <p className=" text-neutral-400">{songData?.album?.name}</p>
