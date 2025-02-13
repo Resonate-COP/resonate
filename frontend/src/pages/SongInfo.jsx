@@ -35,6 +35,10 @@ const SongInfo = () => {
         getReviewData();
     }, []);
 
+    if (!songData) {
+        return <p>Song is Loading</p>
+    }
+
     function msToMinutesSeconds(ms) {
         let minutes = Math.floor(ms / 60000);
         let seconds = Math.floor((ms % 60000) / 1000);
