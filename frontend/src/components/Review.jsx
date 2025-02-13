@@ -61,7 +61,7 @@ const Review = ({ data }) => {
           />
           <div>
             <button 
-              className="text-2xl font-semibold hover:bg-gradient-to-r hover:from-accent hover:via-green-300 hover:to-accent hover:bg-clip-text hover:text-transparent hover:animate-gradient"
+              className="text-2xl font-semibold cursor-pointer hover:text-neutral-400 duration-300"
               onClick={() => navigate(`/main/${songData.id}`)}
             >
               {songData?.name}
